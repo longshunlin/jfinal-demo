@@ -1,0 +1,36 @@
+#@admin_layout(1,0)
+#define title()
+        <title>首页-#(getWebTitle())</title>
+#end
+#define css_external()
+
+#end
+#define main()
+<a href="/admin/testJson" target="_blank">测试json接口</a>
+
+#end
+#define js_first()
+<script src="/js/jquery.sparkline.js" type="text/javascript"></script>
+<script src="/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="/js/owl.carousel.js" ></script>
+<script src="/js/jquery.customSelect.min.js" ></script>
+#end
+#define js_second()
+<script src="/js/sparkline-chart.js"></script>
+<script src="/js/easy-pie-chart.js"></script>
+<script>
+    //owl carousel
+    $(document).ready(function() {
+        $("#owl-demo").owlCarousel({
+            navigation : true,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem : true
+        });
+    });
+    //custom select box
+    $(function(){
+        $('select.styled').customSelect();
+    });
+</script>
+#end

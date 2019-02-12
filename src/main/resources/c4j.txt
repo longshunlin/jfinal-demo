@@ -1,0 +1,6 @@
+cron4j=task1
+
+task1.cron=*/1 * * * *
+task1.class=com.mc.jfinal.cron4j.TestTask
+task1.daemon=true
+task1.enable=true

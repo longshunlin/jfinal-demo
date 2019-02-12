@@ -1,0 +1,158 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	font-family:微软雅黑;
+
+	}
+.AD00{
+	background:#252529;
+	width:100%;
+	height:50px;
+	}
+.AD01{
+	line-height:50px;
+	font-size:15px;
+	width:300px;
+	float:left;
+	color:#fff;
+	margin-left:25px;
+	}
+.ad02{
+	width:100%;
+	height:50px;
+	background-color:#768093;
+	}
+.ad03{
+	width:15%;
+	height:50px;
+	line-height:50px;
+	float:left;
+	}
+.ad04{
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	color:#fff;
+	font-size:15px;
+	float:left;
+	}
+.ad05{
+	width:15%;
+	height:50px;
+	line-height:50px;
+	float:right;
+	}
+/*--table--*/
+.cc11{
+	height:100px;
+	border-right:1px solid #ecedf2;
+	border-bottom:1px solid #ecedf2;
+	}
+.cc12{
+	height:100px;
+	border-top:1px solid #ecedf2;
+	border-bottom:1px solid #ecedf2;
+	}
+.cc13{
+	height:100px;
+	border-right:1px solid #ecedf2;
+	border-top:1px solid #ecedf2;
+	border-bottom:1px solid #ecedf2;
+	}
+.cc14{
+	height:100px;
+	border-top:1px solid #ecedf2;
+	border-bottom:1px solid #ecedf2;
+	}
+.c80{
+
+
+	}
+.c80a{
+	background-color:#e9f3ff;
+	}
+.c88{
+	width:100%;
+	height:20px;
+	font-size:12px;
+	text-align:left;
+	line-height:20px;
+	border-bottom:1px solid #f8f8f8;}
+.c99{
+	font-weight:700;
+	font-size:15px;
+
+	}
+.c78{
+	opacity:1;
+	background-color:#e9f3ff;
+	}
+.c79{
+	opacity:0.7;
+
+	}
+.c81{
+	width:90%; height:30px;
+	line-height:30px;
+	font-size:15px;
+	font-weight:700;
+	margin-left:auto;
+	margin-right:auto;
+	color:#768093;
+	text-align:right;
+	}
+.c82{
+	width:95%; height:60px;
+	line-height:20px;
+	font-size:15px;
+	font-weight:500;
+	margin-left:auto;
+	margin-right:auto;
+	color:#252529;
+	text-align:left;
+	}
+.c83{
+	width:90%; height:20px; line-height:20px;
+	font-size:12px;
+	font-weight:500;
+	text-align:right;
+	margin-left:auto;
+	margin-right:auto;
+	color:#768093;
+	}
+/*---圆角按钮---*/
+.ddd{
+		width:30px;
+		height:15px;
+		line-height:15px;
+		font-size:12px;
+        border:1px solid #2083fe;
+		border-radius:5px;
+		text-align:center;
+		background:#2083fe;
+		color:#fff;
+		float:right;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

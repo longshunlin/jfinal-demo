@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="#(getWebTitle())">
+    <meta name="author" content="mc">
+    <meta name="keyword" content="#(getWebTitle())">
+    <title>#(getWebTitle())</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+  <body class="login-body">
+    <div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">#(getWebTitle())</h2>
+        <div class="login-wrap">
+            <input type="text" id="userName" class="form-control" placeholder="用户账号" autofocus>
+            <input type="password" id="psw" class="form-control" placeholder="密码">
+            <label class="checkbox">
+                <input type="checkbox" id="rmb" checked="checked" value="remember-me"> 记住登陆账号
+                <span class="pull-right"> <a href="javascript:;" id="forgot"> 忘记密码?</a></span>
+            </label>
+            <button class="btn btn-lg btn-login btn-block" id="submit" type="button">登陆</button>
+            <p>本系统推荐使用谷歌浏览器 <a href="https://pc.qq.com/detail/1/detail_2661.html" target="_blank" style="color: #41cac0;">点击下载</a></p>
+        </div>
+      </form>
+    </div>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/layer/layer.js"></script>
+    <script src="/js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#forgot').click(function () {
+                layer.alert('请联系管理员进行处理！', {
+                    title: '提示框',
+                    icon: 0,
+                });
+            });
+            $("#userName").show(function () {
+                $("#userName").val($.cookie('userName'));
+            });
+
+            $("#submit").click(function () {
+                var userName = $("#userName").val();
+                var userPwd = $("#psw").val();
+                if (userName == '') {
+                    layer.alert('请输入用户账号', {
+                        title: '提示框',
+                        icon: 0,
+                    });
+                    return false;
+                }
+                if (userPwd == '') {
+                    layer.alert('请输入密码', {
+                        title: '提示框',
+                        icon: 0,
+                    });
+                    return false;
+                }
+                var index = layer.load(1, {
+                    title: "登录中...",
+                });
+                $.post("/login/doLogin", {userName: userName, userPwd: userPwd}, function (data) {
+                    layer.close(index);
+                    if (data == "0") {
+                        if ($('#rmb').prop('checked')) {
+                            $.cookie('userName',$("#userName").val(), { expires: 30 })
+                        }
+                        window.location.href = "/admin/index"
+                    } else if(data == "1") {
+                        if ($('#rmb').prop('checked')==true) {
+                            $.cookie('userName',$("#userName").val(), { expires: 30 })
+                        }
+                        window.location.href = "/store/index"
+                    } else if(data == "2") {
+                        layer.alert('您没有登录后台的权限。', {
+                            title: '提示框',
+                            icon: 0,
+                        });
+                    } else if (data == "-1") {
+                        layer.alert('该用户不存在', {
+                            title: '提示框',
+                            icon: 0,
+                        });
+                    } else if (data == "-2") {
+                        layer.alert('密码错误', {
+                            title: '提示框',
+                            icon: 0,
+                        });
+                    } else if (data == "-3") {
+                        layer.alert('该用户已给禁用，请联系相关人员进行处理。', {
+                            title: '提示框',
+                            icon: 0,
+                        });
+                    } else {
+                        layer.alert('未知原因登录失败', {
+                            title: '提示框',
+                            icon: 0,
+                        });
+                    }
+                });
+            });
+            document.onkeydown = function (e) {
+                var ev = document.all ? window.event : e;
+                if (ev.keyCode == 13) {
+                    $("#submit").click();
+                    return false;
+                }
+            }
+        });
+    </script>
+  </body>
+</html>

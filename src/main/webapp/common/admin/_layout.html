@@ -1,0 +1,122 @@
+#define admin_layout(menu1 , menu2)
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="#(getWebTitle())">
+		<meta name="author" content="">
+		<meta name="keyword" content="">
+		#@title()
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap-reset.css" rel="stylesheet">
+		<!--external css-->
+		<link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		#@css_external()
+		<!-- Custom styles for this template -->
+		<link href="/css/style.css" rel="stylesheet">
+		<link href="/css/style-responsive.css" rel="stylesheet" />
+		<script src="/js/jquery.js"></script>
+		<script src="/js/layer/layer.js"></script>
+		<!--[if lt IE 9]>
+		<script src="/js/html5.js"></script>
+		<script src="/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+<body>
+	<section id="container" class="">
+		<!--header start-->
+		<header class="header white-bg">
+			<div class="sidebar-toggle-box">
+				<div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+			</div>
+			<!--logo start-->
+			<a href="/admin" class="logo">剪<span>名堂</span>管理员系统</a>
+			<!--logo end-->
+			<div class="top-nav ">
+				<!-- user info start-->
+				<ul class="nav pull-right top-menu">
+					<!-- user login dropdown start-->
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							#if(admin.avatar=='' ||admin.avatar==null)
+							<img alt="" src="/img/avatar1_small.jpg">
+							#else
+							<img alt="" height="29px" width="29px" src="#(admin.avatar)">
+							#end
+							<span class="username">#(admin.realName)</span>
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu extended logout">
+							<div class="log-arrow-up"></div>
+							<li><a href="/admin/personInfo"><i class=" icon-suitcase"></i>个人信息</a></li>
+							<li><a href="/admin/editInfo"><i class="icon-cog"></i> 修改密码</a></li>
+							<li><a href="/admin/loginLog"><i class="icon-info-sign"></i> 登陆记录</a></li>
+							<li><a href="#" onclick="logout();"><i class="icon-key"></i> 退出</a></li>
+						</ul>
+					</li>
+					<!-- user login dropdown end -->
+				</ul>
+				<!--search & user info end-->
+			</div>
+		</header>
+		<!--header end-->
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar"  class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu">
+					<li class="menu-1">
+						<a class="" href="/admin/index">
+							<i class="icon-dashboard"></i>
+							<span>首页</span>
+						</a>
+					</li>
+				</ul>
+				<!-- sidebar menu end-->
+				<script type="text/javascript">
+                    function setMenu(one , two) {
+                        $('.menu-' + one).addClass('active');
+                        if(two && two > 0) {
+                            $('.menu-' + one+ '-' + two).addClass('active');
+                        }
+                    }
+                    setMenu(#(menu1) , #(menu2));
+                    function logout() {
+                        layer.confirm('是否确定退出系统？', {
+                                btn: ['是', '否'],//按钮
+                                icon: 2,
+                            },
+                            function () {
+                                window.location.href = "/admin/logout";
+                            });
+                    }
+				</script>
+			</div>
+		</aside>
+		<!--sidebar end-->
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				#@main()
+			</section>
+		</section>
+		<!--main content end-->
+	</section>
+
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.scrollTo.min.js"></script>
+	<script src="/js/jquery.nicescroll.js" type="text/javascript"></script>
+	#@js_first()
+
+	<!--common script for all pages-->
+	<script src="/js/common-scripts.js"></script>
+
+	<!--script for this page-->
+	#@js_second()
+
+</body>
+</html>
+#end
